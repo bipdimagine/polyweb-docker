@@ -1,4 +1,4 @@
-## 3 Polyweb
+## Polyweb
 
 PolyWeb is a web-based platform designed for the centralized visualization and interpretation of genomic variants derived from high-throughput sequencing (WES, WGS, RNA-seq, etc.). Built to support rare disease diagnostics and cohort-based research, PolyWeb integrates variant-level annotations, expression data, and cohort comparisons within a unified interface. It features tight integration with public databases (gnomAD, ClinVar, OMIM) and internal tools such as PolyQuery (for cohort-wide queries), DejaVu (for variant recurrence analysis), and modules for splice prediction, expression outliers, and gene prioritization. 
 
@@ -8,9 +8,9 @@ The platform is primarily written in Perl, and due to its broad functionality an
 
 If you are interested in deploying PolyWeb in your own environment, you are welcome to contact us for installation support at bioinformatique@users-imagine.fr.
 
-### 3.1 Creating PolyWeb from Scratch
+### 1 Creating PolyWeb from Scratch
 
-#### 3.1.1 Prerequisites
+#### 1.1 Prerequisites
 
 1. **Pull from DockerHub**:
     - Download the image using the command:
@@ -33,7 +33,7 @@ sudo mkdir /poly-disk
 sudo chown polyweb:polyweb /poly-disk
 ```
 
-### 3.1.2 Configuration of polyweb-core.cfg
+### 1.2 Configuration of polyweb-core.cfg
 
 The configuration file `polyweb-core.cfg` is located in `polyweb-install/conf/polyweb-core.cfg`.
 
@@ -46,9 +46,9 @@ Once this configuration is complete, run the installation script:
 
 This script will create the directory structure and symbolic links.
 
-### 3.1.3 Database Configuration
+### 1.3 Database Configuration
 
-#### 3.1.3.1 Installing MariaDB
+#### 1.3.1 Installing MariaDB
 
 Install MariaDB on your system. On a Debian or Ubuntu-based system, use the following commands:
 ```sh
@@ -62,7 +62,7 @@ sudo systemctl start mariadb
 sudo systemctl enable mariadb
 ```
 
-#### 3.1.3.2 Creating the User
+#### 1.3.2 Creating the User
 
 Connect to MariaDB:
 ```sh
@@ -76,7 +76,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'polyweb'@'localhost' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 ```
 
-#### 3.1.3.3 Loading Database Schemas
+#### 1.3.3 Loading Database Schemas
 
 Download or place the `sql-dumps.tar` archive on your system, then extract its contents:
 ```sh
@@ -95,7 +95,7 @@ mysql -u polyweb -p < PolyprojectNGS_schema.sql
 
 Repeat this process for each file in the archive to load all necessary schemas.
 
-### 3.1.3.4 Loading a SQL Procedure for the `polyprojectNGS` Table
+### 1.3.4 Loading a SQL Procedure for the `polyprojectNGS` Table
 
 Load the procedure into MariaDB with the following command:
 ```sh
@@ -112,7 +112,7 @@ And listing the available procedures:
 SHOW PROCEDURE STATUS WHERE Db = 'polyprojectNGS';
 ```
 
-### 3.1.4 Starting the Polyweb Server
+### 1.4 Starting the Polyweb Server
 
 To start the Polyweb server, follow the steps below:
 
